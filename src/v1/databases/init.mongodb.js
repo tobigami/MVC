@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const mongoose = require('mongoose');
 
 //connect mongoose

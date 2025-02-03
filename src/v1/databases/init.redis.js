@@ -1,4 +1,7 @@
+/* eslint-disable */
+
 const { createClient } = require('redis');
+const { disable } = require('../../app');
 const client = createClient({
 	url: process.env.REDIS_URL
 });

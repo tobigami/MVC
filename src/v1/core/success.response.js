@@ -1,27 +1,27 @@
 'use strict';
 
-const {ReasonPhrases, StatusCodes} = require('../utils/http.status.code')
+const { ReasonPhrases, StatusCodes } = require('../utils/http.status.code');
 
 class SuccessRes {
-  constructor({message, statusCode = StatusCodes.OK, reasonStatusCode = ReasonPhrases.OK, metadata = {} }) {
-    this.message = message;
-    this.statusCode = statusCode;
-    this.reasonStatusCode = reasonStatusCode;
-    this.metadata = metadata;
-  }
+	constructor({ message, statusCode = StatusCodes.OK, reasonStatusCode = ReasonPhrases.OK, metadata = {} }) {
+		this.message = message;
+		this.statusCode = statusCode;
+		this.reasonStatusCode = reasonStatusCode;
+		this.metadata = metadata;
+	}
 
-  send (res, headers = {}) {
-    return res.status(this.statusCode).json(this)
-  }
+	send(res, _headers = {}) {
+		return res.status(this.statusCode).json(this);
+	}
 }
 
-class Ok extends SuccessRes {
-  constructor({ message = ReasonPhrases.OK,...rest }) {
-    super({message,...rest})
-  }
+class OK extends SuccessRes {
+	constructor({ message = ReasonPhrases.OK, metadata }) {
+		super({ message, statusCode: StatusCodes.OK, reasonStatusCode: ReasonPhrases.OK, metadata });
+	}
 }
 
 module.exports = {
-  OK,
-  SuccessRes
-}
+	OK,
+	SuccessRes
+};
